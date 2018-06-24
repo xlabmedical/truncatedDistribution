@@ -8,7 +8,7 @@ class TruncDist:
     self.lft=dist.cdf(left)
     self.rght=dist.cdf(right)
     l_shape=left.shape
-    self.yaxis=tf.reshape(tf.map_fn(lambda lft: tf.linspace(lft,right,n_points), left.reshape(-1)),tf.concat([[N_points],l_shape],axis=0))
+    self.yaxis=tf.reshape(tf.map_fn(lambda lft: tf.linspace(lft,right,n_points), left.reshape(-1)),tf.concat([[n_points],l_shape],axis=0))
     self.xaxis=dist.cdf(self.yaxis)
     self.dist=dist
     self.batch_shape=dist.batch_shape
