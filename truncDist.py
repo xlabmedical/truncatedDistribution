@@ -80,7 +80,8 @@ class TruncDist:
     return tf.reduce_mean(self.sample(n_samples),axis=0)
 #
   def empirical_var(self, ddof=1, n_samples=1000):
-    return tf.reduce_sum(self.sample(n_samples),axis=0)/(n_samples-ddof)
+    samples=self.sample(n_samples)
+    return tf.reduce_sum((samples-tf.reduce_mean(samples))**2,axis=0)/(n_samples-ddof)
 #
   def empirical_std(self, *args, **kwargs):
     return tf.sqrt(self.empirical_var(*args, **kwargs))
