@@ -20,9 +20,33 @@ right=30.
 td=TD(gamma,left,right)
 samples=td.sample(1000).eval()
 samples_org=gamma.sample(1000).eval()
+tG.empirical_mean().eval()
+tG.empirical_var().eval()
 ```
+> 10.708002
+1.4435476
+
 
 ![gamma_ex](/imgs/gamma_ex.png)
+
+
+```python
+a=2.
+b=5.
+beta=tf.distributions.Beta(a,b)
+left=0.2
+right=1.
+tB=TD(beta,left,right)
+samples=tB.sample(1000).eval()
+samples_org=beta.sample(1000).eval()
+tB.empirical_mean().eval()
+tB.empirical_var().eval()
+```
+> 0.47338647
+0.010388413
+
+![beta_ex](/imgs/beta_ex.png)
+
 
 ## TruncatedDistribution
 
