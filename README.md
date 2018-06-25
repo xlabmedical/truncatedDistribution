@@ -4,7 +4,7 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
 
 The class [TruncatedDistribution](TruncatedDistribution) extends any existing TensorFlow distribution, i.e. inheriting from [tf.distribution](https://www.tensorflow.org/api_docs/python/tf/distributions/Distribution)), to enable their truncated variates, with full support of broadcasting.
 
-See [bellow](#TruncatedDistribution) for documentation.
+See [bellow](#truncateddistribution-1) for documentation.
 
 ### Example: Sampling from a truncated Gamma
 
