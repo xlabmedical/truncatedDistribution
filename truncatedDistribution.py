@@ -2,9 +2,25 @@
 """
 import tensorflow as tf
 
-class TruncDist:
+class TruncatedDistribution:
 
-    """Provides truncated variates of any TensorFlow distribution
+    """Truncated Distributions in native TensorFlow. Provides truncated variates of TensorFlow distributions.
+    
+    Attributes:
+        * dist: an instance of tf.distributions
+                * (ex. Gamma, Dirichlet, etc.)
+        * left: left truncation point
+                * n-dimensional Tensor
+                * should be compatible with dist.batch_shape, as usual
+        * right: left truncation point
+                * n-dimensional Tensor
+                * should be compatible with dist.batch_shape, as usual
+        * lft: cdf at left truncation point
+                * n-dimensional Tensor
+        * rght: cdf at right truncation point
+                * n-dimensional Tensor
+        * dist: tensorFlow distribution
+        * batch_shape: batch shape of the distribution
     """
 
 #
@@ -34,7 +50,7 @@ class TruncDist:
     self.batch_shape=dist.batch_shape
 #
   def sample(self,sample_shape=()):
-    """Samples from the distribution
+    """Generates samples from the distribution.
     
     Args:
         * sample_shape: shape of the batch
@@ -109,6 +125,7 @@ class TruncDist:
     
     Returns:
         * cdf: cdf at X
+                * n dimensional Tensor
     """
     X=tf.maximum(tf.minimum(X,self.right),self.left)
     return tf.log((self.dist.cdf(X)-self.lft)/(self.rght-self.lft))
@@ -121,6 +138,7 @@ class TruncDist:
     
     Returns:
         * pdf: pdf at X
+                * n dimensional Tensor
     """
     mask=(X>=self.left)*(X<=self.right)
     return self.dist.prob(X)*mask/(self.rght-self.lft)
@@ -132,7 +150,8 @@ class TruncDist:
         * X: n dimensional Tenor
     
     Returns:
-        * pdf: pdf at X
+        * log_pdf: log_pdf at X
+                * n dimensional Tensor
     """
     mask=(X>=self.left)*(X<=self.right)
     return tf.log(self.dist.prob(X)/(self.rght-self.lft))*mask
@@ -145,6 +164,7 @@ class TruncDist:
     
     Returns:
         * empirical mean
+                * n dimensional Tensor
     """
     return tf.reduce_mean(self.sample(n_samples),axis=0)
 #
@@ -158,7 +178,8 @@ class TruncDist:
                 * defaults to 1
     
     Returns:
-        empirical variance
+        * empirical variance
+                * n dimensional Tensor
     """
     samples=self.sample(n_samples)
     return tf.reduce_sum((samples-tf.reduce_mean(samples))**2,axis=0)/(n_samples-ddof)
@@ -171,6 +192,7 @@ class TruncDist:
         * **kwargs: names arguments to be passed to self.empirical_var
     
     Returns:
-        empirical standard deviation
+        * empirical standard deviation
+                * n dimensional Tensor
     """
     return tf.sqrt(self.empirical_var(*args, **kwargs))
