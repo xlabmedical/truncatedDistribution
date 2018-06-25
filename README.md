@@ -23,7 +23,7 @@ samples_org=gamma.sample(1000).eval()
 tG.empirical_mean().eval()
 tG.empirical_var().eval()
 ```
-> 10.708002
+> 10.708002  
 1.4435476
 
 
@@ -42,7 +42,7 @@ samples_org=beta.sample(1000).eval()
 tB.empirical_mean().eval()
 tB.empirical_var().eval()
 ```
-> 0.47338647
+> 0.47338647  
 0.010388413
 
 ![beta_ex](/imgs/beta_ex.png)
