@@ -7,20 +7,20 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
 Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Provides truncated variates of [TensorFlow](https://www.tensorflow.org/) distributions.
 
   **Attributes**:
-      * dist: an instance of tf.distributions
-              * (ex. Gamma, Dirichlet, etc.)
-      * left: left truncation point
-              * n-dimensional Tensor
-              * should be compatible with dist.batch_shape, as usual
-      * right: left truncation point
-              * n-dimensional Tensor
-              * should be compatible with dist.batch_shape, as usual
-      * lft: cdf at left truncation point
-              * n-dimensional Tensor
-      * rght: cdf at right truncation point
-              * n-dimensional Tensor
-      * dist: tensorFlow distribution
-      * batch_shape: batch shape of the distribution
+  * dist: an instance of tf.distributions
+          * (ex. Gamma, Dirichlet, etc.)
+  * left: left truncation point
+          * n-dimensional Tensor
+          * should be compatible with dist.batch_shape, as usual
+  * right: left truncation point
+          * n-dimensional Tensor
+          * should be compatible with dist.batch_shape, as usual
+  * lft: cdf at left truncation point
+          * n-dimensional Tensor
+  * rght: cdf at right truncation point
+          * n-dimensional Tensor
+  * dist: tensorFlow distribution
+  * batch_shape: batch shape of the distribution
 
 ### Methods
 
