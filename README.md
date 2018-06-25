@@ -2,6 +2,25 @@
 
 Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Provides truncated variates of [TensorFlow](https://www.tensorflow.org/) distributions.
 
+
+```python
+import tensorflow as tf
+import numpy as np
+from truncatedDistribution import TruncatedDistribution as TD
+
+tf.InteractiveSession()
+concentration=np.array([40.],dtype=np.float32)
+rate=np.array([4.],dtype=np.float32)
+gamma=tf.distributions.Gamma(concentration,rate)
+left=np.array([9.],dtype=np.float32)
+right=30.
+td=TD(gamma,left,right)
+samples=td.sample(1000).eval()
+samples_org=gamma.sample(1000).eval()
+```
+
+![gamma_ex](/imgs/gamma_ex.png)
+
 ## TruncatedDistribution
 
 Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Provides truncated variates of [TensorFlow](https://www.tensorflow.org/) distributions.
@@ -22,7 +41,7 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
   * dist: tensorFlow distribution
   * batch_shape: batch shape of the distribution
 
-### Methods
+## Methods:
 
 ### \_\_init\_\_(dist,left,right, n_points=1000)
 
