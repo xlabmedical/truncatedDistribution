@@ -123,11 +123,11 @@ Generates samples from the distribution.
 
   **Args**:
   * sample_shape: shape of the batch
-      * defaults to (), ie. shape of the dist
+    * defaults to (), ie. shape of the dist
 
   **Returns**:
-    * a batch of samples
-      * n dimensional Tensor
+  * a batch of samples
+    * n dimensional Tensor
 
 ### cdf(X)
 
@@ -148,7 +148,7 @@ Logarithm of cumulative distribution function.
   
   **Returns**:
   * cdf: cdf at X
-		* n dimensional Tensor
+    * n dimensional Tensor
 
 ### prob(X)
 
@@ -159,7 +159,7 @@ Probability density function
   
   **Returns**:
   * pdf: pdf at X
-		* n dimensional Tensor
+    * n dimensional Tensor
 
 ### log_prob(X)
 
@@ -170,7 +170,7 @@ Logarithm of the probability density function
   
   **Returns**:
   * log\_pdf: log_pdf at X
-		* n dimensional Tensor
+    * n dimensional Tensor
 
 ### mean(n_samples=1000)
 
@@ -181,7 +181,7 @@ Empirical mean of the distribution.
   
   **Returns**:
   * empirical mean
-		* n dimensional Tensor
+    * n dimensional Tensor
 
 ### variance(n_samples=1000)
 
@@ -189,13 +189,13 @@ Empirical variance of the distribution.
     
   **Args**:
   * n_samples: number of samples used
-		* defaults to 1000
+    * defaults to 1000
   * ddof: degrees of freedom
-		* defaults to 1
+    * defaults to 1
   
   **Returns**:
   * empirical variance
-		* n dimensional Tensor
+    * n dimensional Tensor
 
 ### std(n_samples=1000)
 
@@ -207,4 +207,4 @@ Empirical standard deviation of the distribution.
   
   **Returns**:
   * empirical standard deviation
-		* n dimensional Tensor
+    * n dimensional Tensor
