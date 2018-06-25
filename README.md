@@ -224,7 +224,7 @@ Empirical variance of the distribution.
   * empirical variance
     * n dimensional Tensor
 
-### std(n_samples=1000)
+### stddev(n_samples=1000)
 
 Empirical standard deviation of the distribution.
     

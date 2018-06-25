@@ -208,7 +208,7 @@ class TruncatedDistribution:
     samples = self.sample(n_samples)
     return tf.reduce_sum((samples-tf.reduce_mean(samples))**2, axis=0)/(n_samples-ddof)
 
-  def std(self, *args, **kwargs):
+  def stddev(self, *args, **kwargs):
     """Empirical standard deviation of the distribution.
 
     Args:
