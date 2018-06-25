@@ -2,6 +2,9 @@
 
 Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Provides truncated variates of [TensorFlow](https://www.tensorflow.org/) distributions.
 
+The class [TruncatedDistribution](TruncatedDistribution) extends any existing TensorFlow distribution, i.e. inheriting from [tf.distribution(https://www.tensorflow.org/api_docs/python/tf/distributions/Distribution)]), to enable their truncated variates, with full support of broadcasting.
+
+See bellow for documentation.
 
 ```python
 import tensorflow as tf
