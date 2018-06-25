@@ -145,7 +145,6 @@ class TruncatedDistribution:
     """
     X = tf.maximum(tf.minimum(X, self.right), self.left)
     return (self.dist.cdf(X)-self.lft)/(self.rght-self.lft)
-#
 
   def log_cdf(self, X):
     """Logarithm of cumulative distribution function.
