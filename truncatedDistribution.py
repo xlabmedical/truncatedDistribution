@@ -23,7 +23,6 @@ class TruncatedDistribution:
       * dist: tensorFlow distribution
       * batch_shape: batch shape of the distribution
     """
-  #
 
   def __init__(self, dist, left, right, n_points=1000):
     """Construct the truncated variate of a TensorFlow distribution
@@ -62,7 +61,6 @@ class TruncatedDistribution:
     self.xaxis = dist.cdf(self.yaxis)
     self.dist = dist
     self.batch_shape = dist.batch_shape
-#
 
   def sample(self, sample_shape=()):
     """Generates samples from the distribution.
@@ -136,7 +134,6 @@ class TruncatedDistribution:
         tf.reshape(
             res, tf.concat(
                 [sample_shape_original, tf.shape(res)[1:]], axis=0)))
-#
 
   def cdf(self, X):
     """Cumulative distribution function.
@@ -161,7 +158,6 @@ class TruncatedDistribution:
     """
     X = tf.maximum(tf.minimum(X, self.right), self.left)
     return tf.log((self.dist.cdf(X)-self.lft)/(self.rght-self.lft))
-#
 
   def prob(self, X):
     """Probability density function
@@ -174,7 +170,6 @@ class TruncatedDistribution:
     """
     mask = (X >= self.left)*(X <= self.right)
     return self.dist.prob(X)*mask/(self.rght-self.lft)
-#
 
   def log_prob(self, X):
     """Logarithm of the probability density function
@@ -187,7 +182,6 @@ class TruncatedDistribution:
     """
     mask = (X >= self.left)*(X <= self.right)
     return tf.log(self.dist.prob(X)/(self.rght-self.lft))*mask
-#
 
   def mean(self, n_samples=1000):
     """Empirical mean of the distribution.
@@ -199,7 +193,6 @@ class TruncatedDistribution:
         * n dimensional Tensor
     """
     return tf.reduce_mean(self.sample(n_samples), axis=0)
-#
 
   def variance(self, ddof=1, n_samples=1000):
     """Empirical variance of the distribution.
@@ -215,7 +208,6 @@ class TruncatedDistribution:
     """
     samples = self.sample(n_samples)
     return tf.reduce_sum((samples-tf.reduce_mean(samples))**2, axis=0)/(n_samples-ddof)
-#
 
   def std(self, *args, **kwargs):
     """Empirical standard deviation of the distribution.
