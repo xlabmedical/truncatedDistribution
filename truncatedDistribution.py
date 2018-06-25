@@ -32,9 +32,8 @@ class TruncatedDistribution:
 			* left: left truncation point
 				* n-dimensional Tensor
 				* should be compatible with dist.batch_shape, as usual
-			* right: left truncation point
-				* n-dimensional Tensor
-				* should be compatible with dist.batch_shape, as usual
+			* right: right truncation point
+				* a scalar (for now)
 			* n_points: number of points used for estimation of inv_cdf
 				* defaults to 1000
 		"""
