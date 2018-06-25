@@ -146,6 +146,16 @@ class TruncatedDistribution:
     X = tf.maximum(tf.minimum(X, self.right), self.left)
     return (self.dist.cdf(X)-self.lft)/(self.rght-self.lft)
 
+  def survival_function(self, X):
+    """Survival function.
+
+    Args:
+      * X: n dimensional Tenor
+    Returns:
+      * survival_function: 1 - cdf at X
+    """
+    return 1. - self.cdf(X)
+
   def log_cdf(self, X):
     """Logarithm of cumulative distribution function.
 
