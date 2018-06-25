@@ -6,7 +6,7 @@ The class [TruncatedDistribution](TruncatedDistribution) extends any existing Te
 
 See [bellow](#truncateddistribution-1) for documentation.
 
-### Example: Sampling from a truncated Gamma
+### Example: Truncated Gamma
 
 ```python
 import tensorflow as tf
@@ -22,18 +22,28 @@ right=30.
 td=TD(gamma,left,right)
 samples=td.sample(1000).eval()
 samples_org=gamma.sample(1000).eval()
+```
 
-tG.empirical_mean().eval()
-tG.empirical_var().eval()
+![gamma_ex](/imgs/gamma_ex.png)
+
+**Difference in statistics:**
+
+```python
+tG.mean().eval()
+tG.variance().eval()
 ```
 > 10.708002  
 1.4435476
 
+```python
+gamma.mean().eval()
+gamma.variance().eval()
+```
+> 10  
+2.5
 
-![gamma_ex](/imgs/gamma_ex.png)
 
-
-### Example: CDF of a truncated beta
+### Example: Truncated beta
 
 
 ```python
@@ -46,14 +56,25 @@ tB=TD(beta,left,right)
 X=np.linspace(0,1,100,dtype=np.float32)
 Y1=tB.cdf(X).eval()
 Y2=beta.cdf(X).eval()
+```
 
-tB.empirical_mean().eval()
-tB.empirical_var().eval()
+![beta_ex](/imgs/beta_ex.png)
+
+**Difference in statistics:**
+
+```python
+tB.mean().eval()
+tB.variance().eval()
 ```
 > 0.47338647  
 0.010388413
 
-![beta_ex](/imgs/beta_ex.png)
+```python
+gamma.mean().eval()
+gamma.variance().eval()
+```
+> 0.2857143  
+0.025510205
 
 
 ## TruncatedDistribution
@@ -149,7 +170,7 @@ Logarithm of the probability density function
   * log\_pdf: log_pdf at X
 		* n dimensional Tensor
 
-### empirical\_mean(n_samples=1000)
+### mean(n_samples=1000)
 
 Empirical mean of the distribution.
     
@@ -160,7 +181,7 @@ Empirical mean of the distribution.
   * empirical mean
 		* n dimensional Tensor
 
-### empirical\_var(n_samples=1000)
+### variance(n_samples=1000)
 
 Empirical variance of the distribution.
     
@@ -174,13 +195,13 @@ Empirical variance of the distribution.
   * empirical variance
 		* n dimensional Tensor
 
-### empirical\_std(n_samples=1000)
+### std(n_samples=1000)
 
 Empirical standard deviation of the distribution.
     
   **Args**:
-  * *args: arguments to be passed to self.empirical_var
-  * **kwargs: names arguments to be passed to self.empirical_var
+  * *args: arguments to be passed to self.var
+  * **kwargs: names arguments to be passed to self.variance
   
   **Returns**:
   * empirical standard deviation

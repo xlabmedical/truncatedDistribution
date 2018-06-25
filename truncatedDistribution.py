@@ -154,7 +154,7 @@ class TruncatedDistribution:
 		mask=(X>=self.left)*(X<=self.right)
 		return tf.log(self.dist.prob(X)/(self.rght-self.lft))*mask
 #
-	def empirical_mean(self, n_samples=1000):
+	def mean(self, n_samples=1000):
 		"""Empirical mean of the distribution.
 		
 		Args:
@@ -165,7 +165,7 @@ class TruncatedDistribution:
 		"""
 		return tf.reduce_mean(self.sample(n_samples),axis=0)
 #
-	def empirical_var(self, ddof=1, n_samples=1000):
+	def variance(self, ddof=1, n_samples=1000):
 		"""Empirical variance of the distribution.
 		
 		Args:
@@ -180,14 +180,14 @@ class TruncatedDistribution:
 		samples=self.sample(n_samples)
 		return tf.reduce_sum((samples-tf.reduce_mean(samples))**2,axis=0)/(n_samples-ddof)
 #
-	def empirical_std(self, *args, **kwargs):
+	def std(self, *args, **kwargs):
 		"""Empirical standard deviation of the distribution.
 		
 		Args:
-			* *args: arguments to be passed to self.empirical_var
-			* **kwargs: names arguments to be passed to self.empirical_var	
+			* *args: arguments to be passed to self.var
+			* **kwargs: names arguments to be passed to self.variance	
 		Returns:
 			* empirical standard deviation
 				* n dimensional Tensor
 		"""
-		return tf.sqrt(self.empirical_var(*args, **kwargs))
+		return tf.sqrt(self.variance(*args, **kwargs))

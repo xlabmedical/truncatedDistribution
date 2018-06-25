@@ -23,10 +23,12 @@ ax2.hist(samples_org)
 ax2.set_xlim(left=3,right=16)
 ax2.set_title("$\Gamma(40,4)$")
 plt.show()
-plt.cla()
 
-print(tG.empirical_mean().eval())
-print(tG.empirical_var().eval())
+print(tG.mean().eval())
+print(tG.variance().eval())
+
+print(gamma.mean().eval())
+print(gamma.variance().eval())
 
 a=2.
 b=5.
@@ -48,5 +50,8 @@ ax2.set_xlim(left=0,right=1)
 ax2.set_title("$Beta(2,5)$")
 plt.show()
 
-print(tB.empirical_mean().eval())
-print(tB.empirical_var().eval())
+print(tB.mean().eval())
+print(tB.variance().eval())
+
+print(beta.mean().eval())
+print(beta.variance().eval())
