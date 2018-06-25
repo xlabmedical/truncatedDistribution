@@ -40,7 +40,6 @@ X=np.linspace(0,1,100,dtype=np.float32)
 Y1=tB.cdf(X).eval()
 Y2=beta.cdf(X).eval()
 
-
 f,(ax1,ax2)=plt.subplots(1,2)
 ax1.plot(X,Y1)
 ax1.set_xlim(left=0,right=1)
@@ -56,12 +55,11 @@ print(tB.variance().eval())
 print(beta.mean().eval())
 print(beta.variance().eval())
 
-
 concentration=np.array([10.,11.],dtype=np.float32)
 rate=np.array([4.],dtype=np.float32)
 gamma=tf.distributions.Gamma(concentration,rate)
 right=np.array([1.,0.5,0.7],dtype=np.float32).reshape(3,1)
-left=0.2
+left=np.array([0.1,0.2,0.3],dtype=np.float32).reshape(3,1)
 tG=TD(gamma,left,right)
 single_sample=tG.sample().eval()
 
