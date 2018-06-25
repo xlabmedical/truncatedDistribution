@@ -127,7 +127,7 @@ class TruncatedDistribution:
 		
 		Returns:
 			* cdf: cdf at X
-					* n dimensional Tensor
+				* n dimensional Tensor
 		"""
 		X=tf.maximum(tf.minimum(X,self.right),self.left)
 		return tf.log((self.dist.cdf(X)-self.lft)/(self.rght-self.lft))
