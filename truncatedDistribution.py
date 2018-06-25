@@ -30,10 +30,11 @@ class TruncatedDistribution:
 			* dist: an instance of tf.distributions
 				* (ex. Gamma, Dirichlet, etc.)
 			* left: left truncation point
-				* n-dimensional Tensor
+				* a scalar or an n-dimensional Tensor, equal shape as right
 				* should be compatible with dist.batch_shape, as usual
 			* right: right truncation point
-				* a scalar (for now)
+				* a scalar or an n-dimensional Tensor, equal shape as left
+				* should be compatible with dist.batch_shape, as usual
 			* n_points: number of points used for estimation of inv_cdf
 				* defaults to 1000
 		"""
@@ -43,8 +44,16 @@ class TruncatedDistribution:
 		self.right=right
 		self.lft=dist.cdf(left)
 		self.rght=dist.cdf(right)
-		l_shape=left.shape
-		self.yaxis=tf.reshape(tf.map_fn(lambda lft: tf.linspace(lft,right,n_points), tf.reshape(left,[-1])),tf.concat([[n_points],l_shape],axis=0))
+		try:
+			l_shape=tf.shape(left)
+			self.yaxis=tf.reshape(tf.map_fn(lambda lft: tf.linspace(lft,right,n_points), tf.reshape(left,[-1])),tf.concat([[n_points],l_shape],axis=0))
+		except ValueError:
+			try:
+				r_shape=tf.shape(right)
+				self.yaxis=tf.reshape(tf.map_fn(lambda rght: tf.linspace(left,rght,n_points), tf.reshape(right,[-1])),tf.concat([[n_points],r_shape],axis=0))
+			except ValueError:
+				shape= tf.shape(left) if left.shape.ndims >= right.shape.ndims else tf.shape(right)
+				self.yaxis=tf.reshape(tf.map_fn(lambda pt: tf.linspace(pt[0],pt[1],n_points), tf.stack([tf.reshape(left,[-1]),tf.reshape(right,[-1])],axis=1)),tf.concat([[n_points],shape],axis=0))
 		self.xaxis=dist.cdf(self.yaxis)
 		self.dist=dist
 		self.batch_shape=dist.batch_shape

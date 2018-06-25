@@ -60,8 +60,8 @@ print(beta.variance().eval())
 concentration=np.array([10.,11.],dtype=np.float32)
 rate=np.array([4.],dtype=np.float32)
 gamma=tf.distributions.Gamma(concentration,rate)
-left=np.array([0.1,0.15,0.2],dtype=np.float32).reshape(3,1)
-right=1.
+right=np.array([1.,0.5,0.7],dtype=np.float32).reshape(3,1)
+left=0.1
 tG=TD(gamma,left,right)
 single_sample=tG.sample().eval()
 
