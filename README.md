@@ -8,17 +8,17 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
 
   **Attributes**:
   * dist: an instance of tf.distributions
-          * (ex. Gamma, Dirichlet, etc.)
+      * (ex. Gamma, Dirichlet, etc.)
   * left: left truncation point
-          * n-dimensional Tensor
-          * should be compatible with dist.batch_shape, as usual
+      * n-dimensional Tensor
+      * should be compatible with dist.batch_shape, as usual
   * right: left truncation point
-          * n-dimensional Tensor
-          * should be compatible with dist.batch_shape, as usual
+      * n-dimensional Tensor
+      * should be compatible with dist.batch_shape, as usual
   * lft: cdf at left truncation point
-          * n-dimensional Tensor
+      * n-dimensional Tensor
   * rght: cdf at right truncation point
-          * n-dimensional Tensor
+      * n-dimensional Tensor
   * dist: tensorFlow distribution
   * batch_shape: batch shape of the distribution
 
@@ -30,15 +30,15 @@ Construct the truncated variate of a TensorFlow distribution.
 
   **Args**:
   * dist: an instance of tf.distributions
-          * (ex. Gamma, Dirichlet, etc.)
+      * (ex. Gamma, Dirichlet, etc.)
   * left: left truncation point
-          * n-dimensional Tensor
-          * should be compatible with dist.batch_shape, as usual
+      * n-dimensional Tensor
+      * should be compatible with dist.batch_shape, as usual
   * right: left truncation point
-          * n-dimensional Tensor
-          * should be compatible with dist.batch_shape, as usual
+      * n-dimensional Tensor
+      * should be compatible with dist.batch_shape, as usual
   * n_points: number of points used for estimation of inv_cdf
-          * defaults to 1000
+      * defaults to 1000
 
 #### sample(self,sample_shape=())
 
@@ -46,10 +46,10 @@ Generates samples from the distribution.
 
   **Args**:
   * sample_shape: shape of the batch
-          * defaults to (), ie. shape of the dist
+      * defaults to (), ie. shape of the dist
   **Returns**:
     * a batch of samples
-            * n dimensional Tensor
+      * n dimensional Tensor
 
 #### cdf(self,X)
 
@@ -70,7 +70,7 @@ Logarithm of cumulative distribution function.
   
   **Returns**:
   * cdf: cdf at X
-          * n dimensional Tensor
+		* n dimensional Tensor
 
 #### prob(self,X)
 
@@ -81,7 +81,7 @@ Probability density function
   
   **Returns**:
   * pdf: pdf at X
-          * n dimensional Tensor
+		* n dimensional Tensor
 
 #### log_prob(self,X)
 
@@ -92,7 +92,7 @@ Logarithm of the probability density function
   
   **Returns**:
   * log\_pdf: log_pdf at X
-          * n dimensional Tensor
+		* n dimensional Tensor
 
 #### empirical\_mean(self, n_samples=1000)
 
@@ -103,7 +103,7 @@ Empirical mean of the distribution.
   
   **Returns**:
   * empirical mean
-          * n dimensional Tensor
+		* n dimensional Tensor
 
 #### empirical\_var(self, n_samples=1000)
 
@@ -112,14 +112,14 @@ Empirical variance of the distribution.
   **Args**:
 
   * n_samples: number of samples used
-          * defaults to 1000
+		* defaults to 1000
   * ddof: degrees of freedom
-          * defaults to 1
+		* defaults to 1
   
   **Returns**:
 
   * empirical variance
-          * n dimensional Tensor
+		* n dimensional Tensor
 
 #### empirical\_std(self, n_samples=1000)
 
@@ -133,4 +133,4 @@ Empirical standard deviation of the distribution.
   **Returns**:
 
   * empirical standard deviation
-          * n dimensional Tensor
+		* n dimensional Tensor
