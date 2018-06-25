@@ -29,9 +29,11 @@ tG.empirical_var().eval()
 > 10.708002  
 1.4435476
 
-### Example: CDF of a truncated beta
 
 ![gamma_ex](/imgs/gamma_ex.png)
+
+
+### Example: CDF of a truncated beta
 
 
 ```python
