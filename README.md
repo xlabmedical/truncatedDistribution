@@ -166,16 +166,6 @@ Cumulative distribution function.
   **Returns**:
   * cdf: cdf at X
 
-### survival_function(X)
-
-Survival function.
-
-  **Args**:
-  * X: n dimensional Tenor
-  
-  **Returns**:
-  * survival_function: 1 - cdf at X
-
 ### log_cdf(X):
 
 Logarithm of cumulative distribution function.
@@ -186,6 +176,16 @@ Logarithm of cumulative distribution function.
   **Returns**:
   * cdf: cdf at X
     * n dimensional Tensor
+
+### log\_survival\_function(X)
+
+Survival function.
+
+  **Args**:
+  * X: n dimensional Tenor
+  
+  **Returns**:
+  * log\_survival_function: log(1 - cdf) at X
 
 ### prob(X)
 
