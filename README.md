@@ -40,7 +40,6 @@ gamma.mean().eval()
 gamma.variance().eval()
 ```
 > 10  
-
 2.5
 
 
