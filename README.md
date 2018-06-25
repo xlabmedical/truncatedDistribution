@@ -77,6 +77,34 @@ gamma.variance().eval()
 0.025510205
 
 
+### Example: Broadcasting
+
+Points of truncation are capable of broadcasting in typical TensorFlow fashion.
+
+```python
+concentration=np.array([10.,11.],dtype=np.float32)
+rate=np.array([4.],dtype=np.float32)
+gamma=tf.distributions.Gamma(concentration,rate)
+left=np.array([0.1,0.15,0.2],dtype=np.float32)
+right=1.
+```
+For example, by expanding their dimension, a single resulting sample takes on the shape of
+
+```python
+tG=TD(gamma,left.reshape(3,1),right)
+single_sample=tG.sample().eval()
+single_sample.shape
+```
+> (3,2)
+
+We can also sample in batches, by specifying the desired shape of the sample.
+
+```python
+sample=tG.sample(sample_shape = (5,4)).eval()
+sample.shape
+```
+> (5,4,3,2)
+
 
 ## TruncatedDistribution
 
@@ -201,7 +229,7 @@ Empirical variance of the distribution.
 Empirical standard deviation of the distribution.
     
   **Args**:
-  * *args: arguments to be passed to self.var
+  * *args: arguments to be passed to self.variance
   * **kwargs: names arguments to be passed to self.variance
   
   **Returns**:
