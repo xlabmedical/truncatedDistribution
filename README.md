@@ -40,10 +40,11 @@ gamma.mean().eval()
 gamma.variance().eval()
 ```
 > 10  
+
 2.5
 
 
-### Example: Truncated beta
+### Example: Truncated Beta
 
 
 ```python
@@ -75,6 +76,7 @@ gamma.variance().eval()
 ```
 > 0.2857143  
 0.025510205
+
 
 
 ## TruncatedDistribution
