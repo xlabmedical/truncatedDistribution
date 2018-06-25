@@ -24,7 +24,7 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
 
 ### Methods
 
-#### \_\_init\_\_(self,dist,left,right, n_points=1000)
+#### \_\_init\_\_(dist,left,right, n_points=1000)
 
 Construct the truncated variate of a TensorFlow distribution.
 
@@ -40,7 +40,7 @@ Construct the truncated variate of a TensorFlow distribution.
   * n_points: number of points used for estimation of inv_cdf
       * defaults to 1000
 
-#### sample(self,sample_shape=())
+#### sample(sample_shape=())
 
 Generates samples from the distribution.
 
@@ -51,7 +51,7 @@ Generates samples from the distribution.
     * a batch of samples
       * n dimensional Tensor
 
-#### cdf(self,X)
+#### cdf(X)
 
 Cumulative distribution function.
 
@@ -61,7 +61,7 @@ Cumulative distribution function.
   **Returns**:
   * cdf: cdf at X
 
-#### log_cdf(self,X):
+#### log_cdf(X):
 
 Logarithm of cumulative distribution function.
     
@@ -72,7 +72,7 @@ Logarithm of cumulative distribution function.
   * cdf: cdf at X
 		* n dimensional Tensor
 
-#### prob(self,X)
+#### prob(X)
 
 Probability density function
     
@@ -83,7 +83,7 @@ Probability density function
   * pdf: pdf at X
 		* n dimensional Tensor
 
-#### log_prob(self,X)
+#### log_prob(X)
 
 Logarithm of the probability density function
     
@@ -94,7 +94,7 @@ Logarithm of the probability density function
   * log\_pdf: log_pdf at X
 		* n dimensional Tensor
 
-#### empirical\_mean(self, n_samples=1000)
+#### empirical\_mean(n_samples=1000)
 
 Empirical mean of the distribution.
     
@@ -105,7 +105,7 @@ Empirical mean of the distribution.
   * empirical mean
 		* n dimensional Tensor
 
-#### empirical\_var(self, n_samples=1000)
+#### empirical\_var(n_samples=1000)
 
 Empirical variance of the distribution.
     
@@ -121,7 +121,7 @@ Empirical variance of the distribution.
   * empirical variance
 		* n dimensional Tensor
 
-#### empirical\_std(self, n_samples=1000)
+#### empirical\_std(n_samples=1000)
 
 Empirical standard deviation of the distribution.
     
