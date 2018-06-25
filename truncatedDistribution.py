@@ -10,11 +10,11 @@ class TruncatedDistribution:
 			* dist: an instance of tf.distributions
 					* (ex. Gamma, Dirichlet, etc.)
 			* left: left truncation point
-					* n-dimensional Tensor
-					* should be compatible with dist.batch_shape, as usual
-			* right: left truncation point
-					* n-dimensional Tensor
-					* should be compatible with dist.batch_shape, as usual
+				* a scalar or an n-dimensional Tensor
+				* should be compatible with dist.batch_shape, as usual
+			* right: right truncation point
+				* a scalar or an n-dimensional Tensor
+				* should be compatible with dist.batch_shape, as usual
 			* lft: cdf at left truncation point
 					* n-dimensional Tensor
 			* rght: cdf at right truncation point
@@ -30,30 +30,27 @@ class TruncatedDistribution:
 			* dist: an instance of tf.distributions
 				* (ex. Gamma, Dirichlet, etc.)
 			* left: left truncation point
-				* a scalar or an n-dimensional Tensor, equal shape as right
+				* a scalar or an n-dimensional Tensor
 				* should be compatible with dist.batch_shape, as usual
 			* right: right truncation point
-				* a scalar or an n-dimensional Tensor, equal shape as left
+				* a scalar or an n-dimensional Tensor
 				* should be compatible with dist.batch_shape, as usual
 			* n_points: number of points used for estimation of inv_cdf
 				* defaults to 1000
 		"""
 		left=tf.convert_to_tensor(left)
 		right=tf.convert_to_tensor(right)
-		self.left=left
-		self.right=right
 		self.lft=dist.cdf(left)
 		self.rght=dist.cdf(right)
-		try:
-			l_shape=tf.shape(left)
-			self.yaxis=tf.reshape(tf.map_fn(lambda lft: tf.linspace(lft,right,n_points), tf.reshape(left,[-1])),tf.concat([[n_points],l_shape],axis=0))
-		except ValueError:
-			try:
-				r_shape=tf.shape(right)
-				self.yaxis=tf.reshape(tf.map_fn(lambda rght: tf.linspace(left,rght,n_points), tf.reshape(right,[-1])),tf.concat([[n_points],r_shape],axis=0))
-			except ValueError:
-				shape= tf.shape(left) if left.shape.ndims >= right.shape.ndims else tf.shape(right)
-				self.yaxis=tf.reshape(tf.map_fn(lambda pt: tf.linspace(pt[0],pt[1],n_points), tf.stack([tf.reshape(left,[-1]),tf.reshape(right,[-1])],axis=1)),tf.concat([[n_points],shape],axis=0))
+		shape= tf.shape(self.lft) if self.lft.shape.ndims >= self.rght.shape.ndims else tf.shape(self.rght)
+		self.left=tf.ones(shape)*left
+		self.right=tf.ones(shape)*right
+		shape= tf.shape(self.left) if self.left.shape.ndims >= self.right.shape.ndims else tf.shape(self.right)
+		self.yaxis=tf.reshape(
+			tf.map_fn(
+				lambda pt: tf.linspace(pt[0],pt[1],n_points), 
+				tf.stack([tf.reshape(self.left,[-1]),tf.reshape(self.right,[-1])],axis=1)),
+			tf.concat([[n_points],shape],axis=0))
 		self.xaxis=dist.cdf(self.yaxis)
 		self.dist=dist
 		self.batch_shape=dist.batch_shape

@@ -114,10 +114,10 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
   * dist: an instance of tf.distributions
       * (ex. Gamma, Dirichlet, etc.)
   * left: left truncation point
-    * a scalar or an n-dimensional Tensor, equal shape as right
+    * a scalar or an n-dimensional Tensor
     * should be compatible with dist.batch_shape, as usual
   * right: right truncation point
-    * a scalar or an n-dimensional Tensor, equal shape as left
+    * a scalar or an n-dimensional Tensor
     * should be compatible with dist.batch_shape, as usual
   * lft: cdf at left truncation point
     * n-dimensional Tensor
@@ -136,10 +136,11 @@ Construct the truncated variate of a TensorFlow distribution.
   * dist: an instance of tf.distributions
     * (ex. Gamma, Dirichlet, etc.)
   * left: left truncation point
-    * n-dimensional Tensor
+    * a scalar or an n-dimensional Tensor
     * should be compatible with dist.batch_shape, as usual
   * right: right truncation point
-    * a scalar (for now)
+    * a scalar or an n-dimensional Tensor
+    * should be compatible with dist.batch_shape, as usual
   * n_points: number of points used for estimation of inv_cdf
       * defaults to 1000
 

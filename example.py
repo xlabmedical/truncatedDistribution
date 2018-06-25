@@ -61,7 +61,7 @@ concentration=np.array([10.,11.],dtype=np.float32)
 rate=np.array([4.],dtype=np.float32)
 gamma=tf.distributions.Gamma(concentration,rate)
 right=np.array([1.,0.5,0.7],dtype=np.float32).reshape(3,1)
-left=0.1
+left=0.2
 tG=TD(gamma,left,right)
 single_sample=tG.sample().eval()
 
