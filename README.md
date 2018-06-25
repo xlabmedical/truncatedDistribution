@@ -12,10 +12,10 @@ import numpy as np
 from truncatedDistribution import TruncatedDistribution as TD
 
 tf.InteractiveSession()
-concentration=np.array([40.],dtype=np.float32)
-rate=np.array([4.],dtype=np.float32)
+concentration=40.
+rate=4.
 gamma=tf.distributions.Gamma(concentration,rate)
-left=np.array([9.],dtype=np.float32)
+left=9.
 right=30.
 td=TD(gamma,left,right)
 samples=td.sample(1000).eval()
