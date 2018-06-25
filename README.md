@@ -6,6 +6,8 @@ The class [TruncatedDistribution](TruncatedDistribution) extends any existing Te
 
 See bellow for documentation.
 
+### Example: Sampling from a truncated Gamma
+
 ```python
 import tensorflow as tf
 import numpy as np
@@ -20,12 +22,14 @@ right=30.
 td=TD(gamma,left,right)
 samples=td.sample(1000).eval()
 samples_org=gamma.sample(1000).eval()
+
 tG.empirical_mean().eval()
 tG.empirical_var().eval()
 ```
 > 10.708002  
 1.4435476
 
+### Example: CDF of a truncated beta
 
 ![gamma_ex](/imgs/gamma_ex.png)
 
@@ -34,11 +38,13 @@ tG.empirical_var().eval()
 a=2.
 b=5.
 beta=tf.distributions.Beta(a,b)
-left=0.2
+left=0.35
 right=1.
 tB=TD(beta,left,right)
-samples=tB.sample(1000).eval()
-samples_org=beta.sample(1000).eval()
+X=np.linspace(0,1,100,dtype=np.float32)
+Y1=tB.cdf(X).eval()
+Y2=beta.cdf(X).eval()
+
 tB.empirical_mean().eval()
 tB.empirical_var().eval()
 ```
