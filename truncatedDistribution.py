@@ -112,7 +112,6 @@ class TruncatedDistribution:
 
 		Args:
 			* X: n dimensional Tenor
-		
 		Returns:
 			* cdf: cdf at X
 		"""
@@ -124,7 +123,6 @@ class TruncatedDistribution:
 		
 		Args:
 			* X: n dimensional Tenor
-		
 		Returns:
 			* cdf: cdf at X
 				* n dimensional Tensor
@@ -137,7 +135,6 @@ class TruncatedDistribution:
 		
 		Args:
 			* X: n dimensional Tenor
-		
 		Returns:
 			* pdf: pdf at X
 				* n dimensional Tensor
@@ -150,7 +147,6 @@ class TruncatedDistribution:
 		
 		Args:
 			* X: n dimensional Tenor
-		
 		Returns:
 			* log_pdf: log_pdf at X
 				* n dimensional Tensor
@@ -162,8 +158,7 @@ class TruncatedDistribution:
 		"""Empirical mean of the distribution.
 		
 		Args:
-			* n_samples: number of samples used
-		
+			* n_samples: number of samples used		
 		Returns:
 			* empirical mean
 				* n dimensional Tensor
@@ -177,8 +172,7 @@ class TruncatedDistribution:
 			* n_samples: number of samples used
 				* defaults to 1000
 			* ddof: degrees of freedom
-				* defaults to 1
-		
+				* defaults to 1		
 		Returns:
 			* empirical variance
 				* n dimensional Tensor
@@ -191,8 +185,7 @@ class TruncatedDistribution:
 		
 		Args:
 			* *args: arguments to be passed to self.empirical_var
-			* **kwargs: names arguments to be passed to self.empirical_var
-		
+			* **kwargs: names arguments to be passed to self.empirical_var	
 		Returns:
 			* empirical standard deviation
 				* n dimensional Tensor
