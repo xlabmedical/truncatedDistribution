@@ -139,7 +139,7 @@ class TruncatedDistribution:
     """Cumulative distribution function.
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * cdf: cdf at X
     """
@@ -150,7 +150,7 @@ class TruncatedDistribution:
     """Logarithm of cumulative distribution function.
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * cdf: cdf at X
         * n dimensional Tensor
@@ -162,7 +162,7 @@ class TruncatedDistribution:
     """Survival function.
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * survival_function: 1 - cdf at X
     """
@@ -172,7 +172,7 @@ class TruncatedDistribution:
     """Logarithm of the Survival function.
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * log survival_function: log(1 - cdf) at X
     """
@@ -182,7 +182,7 @@ class TruncatedDistribution:
     """Probability density function
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * pdf: pdf at X
         * n dimensional Tensor
@@ -194,7 +194,7 @@ class TruncatedDistribution:
     """Logarithm of the probability density function
 
     Args:
-      * X: n dimensional Tenor
+      * X: n dimensional Tensor
     Returns:
       * log_pdf: log_pdf at X
         * n dimensional Tensor

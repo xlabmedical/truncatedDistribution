@@ -4,7 +4,7 @@ Truncated Distributions in native [TensorFlow](https://www.tensorflow.org/). Pro
 
 The class [TruncatedDistribution](TruncatedDistribution) extends any existing TensorFlow distribution, i.e. classes inheriting from [tf.distribution](https://www.tensorflow.org/api_docs/python/tf/distributions/Distribution), to enable their truncated variates, with full support of broadcasting.
 
-See [bellow](#truncateddistribution-1) for documentation.
+See [below](#truncateddistribution-1) for documentation.
 
 ### Example: Truncated Gamma
 
@@ -161,7 +161,7 @@ Generates samples from the distribution.
 Cumulative distribution function.
 
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * cdf: cdf at X
@@ -171,7 +171,7 @@ Cumulative distribution function.
 Logarithm of cumulative distribution function.
     
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * cdf: cdf at X
@@ -182,7 +182,7 @@ Logarithm of cumulative distribution function.
 Survival function.
 
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * urvival_function: 1 - cdf at X
@@ -192,7 +192,7 @@ Survival function.
 Logarithm of the survival function.
 
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * log\_survival_function: log(1 - cdf) at X
@@ -202,7 +202,7 @@ Logarithm of the survival function.
 Probability density function
     
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * pdf: pdf at X
@@ -213,7 +213,7 @@ Probability density function
 Logarithm of the probability density function
     
   **Args**:
-  * X: n dimensional Tenor
+  * X: n dimensional Tensor
   
   **Returns**:
   * log\_pdf: log_pdf at X
