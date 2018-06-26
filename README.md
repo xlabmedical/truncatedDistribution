@@ -177,9 +177,19 @@ Logarithm of cumulative distribution function.
   * cdf: cdf at X
     * n dimensional Tensor
 
-### log\_survival\_function(X)
+### survival\_function(X)
 
 Survival function.
+
+  **Args**:
+  * X: n dimensional Tenor
+  
+  **Returns**:
+  * urvival_function: 1 - cdf at X
+
+### log\_survival\_function(X)
+
+Logarithm of the survival function.
 
   **Args**:
   * X: n dimensional Tenor
